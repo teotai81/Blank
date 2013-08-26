@@ -17,7 +17,7 @@
 	<mvc:annotation-driven />
 
 	<!-- Abilita auto scan di componenti annotati come  @Controller, @Service, @Configuration, etc. nel package specificato -->
-	<context:component-scan base-package="it.avvocatoaccanto.controller" />
+	<context:component-scan base-package="it.blank.controller" />
 	
 	<!-- Abilito pre e post annotation dei componenti @Controller -->
 	<security:global-method-security pre-post-annotations="enabled" />

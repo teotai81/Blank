@@ -2,6 +2,8 @@ package it.blank.model;
 
 public class User extends Persistence {
 
+	private static final long serialVersionUID = 6648673567096663795L;
+
 	private String username;
 	
 	private String password;

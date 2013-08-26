@@ -1,5 +1,6 @@
 package it.blank.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -24,7 +25,9 @@ import org.hibernate.annotations.Parameter;
 )
 
 @MappedSuperclass
-public class Persistence {
+public class Persistence implements Serializable {
+
+	private static final long serialVersionUID = 605692305670420855L;
 
 	@Id
 	@GeneratedValue(generator = "tablehilo")

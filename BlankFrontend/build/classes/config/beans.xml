@@ -11,7 +11,7 @@
     <context:annotation-config />
     
     
-   	<bean id="userDAO" class="it.avvocatoaccanto.dao.UserDAOImpl">
+   	<bean id="userDAO" class="it.blank.dao.UserDAOImpl">
    	</bean>
    	
    	
@@ -33,7 +33,7 @@
    	
    
   	
-   	<bean id="userServiceTarget" class="it.avvocatoaccanto.service.UserService">
+   	<bean id="userServiceTarget" class="it.blank.service.UserService">
    	    <property name="userDAO" ref="userDAO"></property>
    	</bean>
    	

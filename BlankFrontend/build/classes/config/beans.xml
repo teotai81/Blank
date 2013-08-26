@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+			http://www.springframework.org/schema/context
+           	http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+  	
+    <!-- Abilita Autowire -->
+    <context:annotation-config />
+    
+    
+   	<bean id="userDAO" class="it.avvocatoaccanto.dao.UserDAOImpl">
+   	</bean>
+   	
+   	
+  	
+  	<!-- INIZIO configurazione servizi sicurezza http digest 
+  	<bean id="digestAuthenticationFilter" class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
+  		<property name="userDetailsService" ref="customAuthenticationProvider"/>
+  		<property name="authenticationEntryPoint" ref="digestEntryPoint"/>
+  		<property name="passwordAlreadyEncoded" value="true" />
+	</bean>
+	
+  	<bean id="digestEntryPoint" class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
+  		<property name="realmName" value="${digest.realmName}"/>
+	  	<property name="key" value="${digest.key}"/>
+	  	<property name="nonceValiditySeconds" value="${digest.nonceValiditySeconds}"/>
+	</bean>
+	-->
+    
+   	
+   
+  	
+   	<bean id="userServiceTarget" class="it.avvocatoaccanto.service.UserService">
+   	    <property name="userDAO" ref="userDAO"></property>
+   	</bean>
+   	
+   	<bean id="userService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+   		<property name="transactionManager" ref="txManager"/>
+    	<property name="target" ref="userServiceTarget"/>
+    	<property name="proxyTargetClass" value="true"/>
+    	<property name="transactionAttributes">
+      		<props>
+	        	<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+	      	</props>
+    	</property>
+  	</bean>
+  	
+   
+  	<!--  
+   	<bean id="customAuthenticationProviderTarget" class="it.myandroid.services.CustomAuthenticationProviderService">
+   	    <property name="commonDAO" ref="commonDAO"></property>
+   	</bean>
+   	
+   	<bean id="customAuthenticationProvider" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+   		<property name="transactionManager" ref="transactionManager"/>
+    	<property name="target" ref="customAuthenticationProviderTarget"/>
+    	<property name="proxyTargetClass" value="true"/>
+    	<property name="transactionAttributes">
+      		<props>
+	        	<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+	      	</props>
+    	</property>
+  	</bean>
+  	-->
+   	
+</beans>

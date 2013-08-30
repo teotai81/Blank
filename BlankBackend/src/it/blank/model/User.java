@@ -1,5 +1,8 @@
 package it.blank.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class User extends Persistence {
 
 	private static final long serialVersionUID = 6648673567096663795L;
@@ -8,13 +11,6 @@ public class User extends Persistence {
 	
 	private String password;
 
-	
-	public User(String username, String password) {
-		
-		this.username = username;
-		this.password = password;
-	}
-	
 	
 	public String getUsername() {
 		return username;

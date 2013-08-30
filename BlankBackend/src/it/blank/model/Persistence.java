@@ -15,22 +15,25 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 
-@GenericGenerator (
-		name = "tablehilo",
-		strategy = "hilo",
-		parameters = {
-				@Parameter( name = "table", value = "HIBERNATE_HILO" ),
-				@Parameter( name = "max_lo", value = "100" )
-		}
-)
+
+
 
 @MappedSuperclass
 public class Persistence implements Serializable {
 
 	private static final long serialVersionUID = 605692305670420855L;
 
+	@GenericGenerator (
+			name = "hilo-gen",
+			strategy = "hilo",
+			parameters = {
+					@Parameter( name = "table", value = "HIBERNATE_HILO" ),
+					@Parameter( name = "max_lo", value = "100" )
+			}
+	)
+	
 	@Id
-	@GeneratedValue(generator = "tablehilo")
+	@GeneratedValue(generator = "hilo-gen")
 	private Long id;
 	
 	@Version

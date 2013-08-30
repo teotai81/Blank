@@ -19,7 +19,7 @@
     </bean>
     
     <import resource="classpath:config/hibernate-config.xml" />
-    <import resource="classpath:spring/beans/beans.xml" />
+    <import resource="classpath:config/beans.xml" />
     <!-- 
     <import resource="classpath:spring/security/security.xml" /> -->
 </beans>

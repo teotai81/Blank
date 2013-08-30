@@ -21,11 +21,10 @@ public class UserController {
  
     //Initialize the list with some data for index screen
     static {
-        userList.add(new User("Bill", "Gates"));
-        userList.add(new User("Steve", "Jobs"));
-        userList.add(new User("Larry", "Page"));
-        userList.add(new User("Sergey", "Brin"));
-        userList.add(new User("Larry", "Ellison"));
+    	User user = new User();
+    	user.setUsername("Bill");
+    	user.setPassword("Bill password");
+        userList.add(user);
     }
  
     /**
